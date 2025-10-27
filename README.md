@@ -3,15 +3,12 @@ Functions for building and simulating quantum systems in Julia
 
 For example:
 
-# Number of lattice sites
+
+# First create a Pauli Z operator on site 5
 N=10 
+Z_5 = Op_create(N,"Z",5,"pauli")
 
-# First create a operator
-
-Z_5 = Op_create(N,"Z",5,"pauli") # Pauli Z operator on site 5
-Sz_5 = Op_create(N,"Z",5,"spin") # Spin Z operator on site 5 (Sz= 0.5Z)
-
-#Other options are "X","Y","Z","+","-" (final two are \sigma^+ = X+iY and \sigma^- = X-iY)
+# Other options are "X","Y","Z","+","-" (final two are \sigma^+ = X+iY and \sigma^- = X-iY)
 
 # We can create a product state of up and down spins:
 psi = Product_state(N,"Neel")
