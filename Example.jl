@@ -1,4 +1,4 @@
-#Example code for using Quantum Kit, a package for simulating quantum mechanics
+#Example code for using Quantum Simulator, a Julia code for for simulating quantum mechanics
 cd(@__DIR__);include("Pauli_generator.jl");include("Models.jl")
 N=10 #Number of lattice sites
 
@@ -11,10 +11,3 @@ Sz_5 = Op_create(N,"Z",5,"spin") #spin Z operator on site 5 (Sz= 0.5Z)
 #Options: "Neel" (alternating up & down), "Down" (all down), "Up (all up), "Rand" (random up and down)
 state = Product_state(N,"Neel")
 
-#One can create a density matrix from the outer product, state'
-#Finally, create some Hamiltonian from the built in models
-
-
-
-#Create simple dense unitary (not recommended for serious computation)
-U_t 
