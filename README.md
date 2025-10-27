@@ -32,11 +32,13 @@ d=3;W=20;t=1;
 H_Anderson = H_Anderson(d,N,W,t);
 ```
 ### Random GOE matrix
+```julia
 H_GOE = H_GOE(N);
-
+```
 ### We can check if our operator commutes with one of our H's:
+```julia
 iszero(comm(Z_5,H_XXX));
-
+```
 ## Time evolution
 
 ### We can now time evolve our state by diagonalizing our H
@@ -49,6 +51,6 @@ Or do the same plus measuring our operator Z_5
 ```julia
 t_array=collect(0:10);
 Ops=[Z_5];
-Ops_t=Diag_TE_measure(psi,H,t_array,Ops);
+Ops_t=Diag_TE_measure(psi,H_Chaotic_Ising,t_array,Ops);
 ```
 
