@@ -34,7 +34,7 @@ iszero(comm(Z_5,H_XXX));
 
 # We can now time evolve our state by diagonalizing our H
 t_array=collect(0:10);
-psi_t = Diag_TE(psi,H);
+psi_t = Diag_TE(psi,H_XXX,t_array);
 
 ## Or do the same plus measuring our operator Z_5
 
