@@ -3,21 +3,22 @@ Functions for building and simulating quantum systems in Julia
 
 For example:
 
-N=10 #Number of lattice sites
+# Number of lattice sites
+N=10 
 
 # First create a operator
 
-Z_5 = Op_create(N,"Z",5,"pauli") #Pauli Z operator on site 5
-Sz_5 = Op_create(N,"Z",5,"spin") #spin Z operator on site 5 (Sz= 0.5Z)
+Z_5 = Op_create(N,"Z",5,"pauli") # Pauli Z operator on site 5
+Sz_5 = Op_create(N,"Z",5,"spin") # Spin Z operator on site 5 (Sz= 0.5Z)
 
 #Other options are "X","Y","Z","+","-" (final two are \sigma^+ = X+iY and \sigma^- = X-iY)
 
 # We can create a product state of up and down spins:
 psi = Product_state(N,"Neel")
 
-# Next we can create a variety of built-in Hamiltonians
+## Next we can create a variety of built-in Hamiltonians ##
 
-#Isotropic Heisenberg model
+# Isotropic Heisenberg model
 H_XXX = H_XYZ(N,[1,1,1],zeros(N),zeros(N),zeros(N),"pauli")
 
 # Chaotic Ising model (chaotic for nonzero hx)
