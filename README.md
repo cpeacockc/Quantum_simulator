@@ -2,11 +2,12 @@
 
 Functions for building and simulating quantum systems in Julia with exact diagonalization and sparse matrices. For more advanced simulation methods check out [PauliStrings.jl](https://paulistrings.org/dev/), [ITensors.jl](https://docs.itensor.org/Overview/), and [KrylovKit.jl](https://github.com/Jutho/KrylovKit.jl)
 
-## Example Usage
+## Example Usage of 'Pauli_generator.jl'
 
 ### Create a Pauli Z operator on site 5
 Operator options are "X","Y","Z","+","-" (final two are \sigma^+ = X+iY and \sigma^- = X-iY)
 ```julia
+include("Pauli_generator.jl")
 N = 10 #Number of sites
 Op = "Z"
 site = 5 # site on lattice
@@ -21,13 +22,16 @@ Options are "Neel", "Up", "Dn", "Rand", for alternating up and down, all up, all
 ```julia
 psi = Product_state(N,"Neel") 
 ```
-## Built-in Hamiltonians
-
+## Built-in Hamiltonians from 'Models.jl'
+```julia
+include("Models.jl")
+```
 ### Isotropic Heisenberg model
 ```julia
 Jx,Jy,Jz = 1,1,1 # Define tunneling probabilities in each direction
 X_fields, Y_fields, Z_fields = zeros(N),zeros(N),zeros(N) # Set potentials in each direction
-H_XXX = H_XYZ(N,[Jx,Jy,Jz],X_fields, Y_fields, Z_fields,"pauli");
+H_XXX = H_XYZ(N,[Jx,Jy,Jz],X_fields, Y_fields, Z_fields);
+H_XXX_spin_open_BCs = H_XYZ(N,[Jx,Jy,Jz],X_fields, Y_fields, Z_fields;periodic=false,spinflag="spin"); # extra options to convert to spins and open BC's
 ```
 ### Chaotic Ising model (chaotic for nonzero hx)
 ```julia
@@ -46,7 +50,9 @@ H_Anderson = H_Anderson(d,N,W,t) #Anderson Localization Model
 H_GOE = H_GOE(N);
 ```
 ## Time evolution
-
+```julia
+include("Time evolution.jl")
+```
 ### We can now time evolve our state by diagonalizing our H
 ```julia
 N = 10
