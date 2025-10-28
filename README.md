@@ -1,6 +1,6 @@
 # Quantum-simulator
 
-Functions for building and simulating (with exact diagonalization) quantum systems in Julia. For more advanced simulation methods check out [PauliStrings.jl](https://paulistrings.org/dev/) and [ITensors.jl](https://docs.itensor.org/Overview/) 
+Functions for building and simulating quantum systems in Julia with exact diagonalization and sparse matrices. For more advanced simulation methods check out [PauliStrings.jl](https://paulistrings.org/dev/), [ITensors.jl](https://docs.itensor.org/Overview/), and [KrylovKit.jl](https://github.com/Jutho/KrylovKit.jl)
 
 ## Example Usage
 
