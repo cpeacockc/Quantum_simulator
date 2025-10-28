@@ -115,15 +115,15 @@ end
 H_Disordered_Heisenberg(N::Int64,J::Real,W::Real) = H_XYZ(N,J*ones(3),zeros(N),zeros(N),W .* (rand(N).*2 .-1))
 
 ######### A chaotic Ising chain #########
-function H_Quantum_Ising(N::Int64,hx::Real;periodic::Bool=true)
+function H_Quantum_Ising(N::Int64,X_field::Real,Z_field::Real;periodic::Bool=true,spinflag::String="pauli")
 
     Big_Op = spzeros(2^N,2^N)
 
     for i in 1:N-1
         str=zeros(N)
-        str[i]=1 #X_i
-        str[i+1]=1 #X_i+1
-        Big_Op += pauli_expand(str,"pauli")
+        str[i]=3 #Z_i
+        str[i+1]=3 #Z_i+1
+        Big_Op += pauli_expand(str,spinflag)
     end
 
     #add periodic BCs
@@ -131,17 +131,17 @@ function H_Quantum_Ising(N::Int64,hx::Real;periodic::Bool=true)
     str=zeros(N)
     str[1]=1
     str[N]=1
-    Big_Op += pauli_expand(str,"pauli")
+    Big_Op += pauli_expand(str,spinflag)
     end
 
     for i in 1:N
         str=zeros(N)
         str[i] = 1 #X_i
-        Big_Op += hx * pauli_expand(str,"pauli")
+        Big_Op += X_field * pauli_expand(str,spinflag)
 
         str=zeros(N)
         str[i] = 3 #Z_i
-        Big_Op += -1.05 * pauli_expand(str,"pauli")
+        Big_Op += Z_field * pauli_expand(str,spinflag)
     end
 
     return Big_Op
