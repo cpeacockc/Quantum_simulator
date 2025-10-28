@@ -63,6 +63,6 @@ hx=1.0
 t_array=collect(0:10);
 Ops=[Op_create(N,"Z",site,"pauli") for site in 1:N];
 H = H_Quantum_Ising(N,hx)
-Ops_t=Diag_TE_measure(psi,H_Chaotic_Ising,t_array,Ops);
+Ops_t=Diag_TE_measure(psi,H,t_array,Ops);
 ```
 
